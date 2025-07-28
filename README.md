@@ -1,4 +1,4 @@
-# Control-Loop
+# Control-Loop for Cognitive Decision Making
 A control loop that drives a cognitive decision maker.
 The code is in support of the book "Cognitive EW: An AI Approach" by Karen Zita
 Haigh and Julia Andrusenko. 
