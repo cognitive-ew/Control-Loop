@@ -1,4 +1,4 @@
-%% Pearson VII kernel
+% Pearson VII kernel
 %
 % Ustun, Melssen, and Buydens, "Facilitating the application of Support Vector
 % Regression by using a Universal Pearson VII Function Based Kernel," Chemometrics and
