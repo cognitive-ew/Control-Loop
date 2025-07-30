@@ -27,6 +27,9 @@ There are several exercises for students:<br>
 The scenario driver corresponds to Algorithm 10.1, Figure 10.13,
 and Project 11.6.12 of the second edition, or Figure 10.2 of the first edition.
 
+The following image shows the architectural concept. The scenario driver loads a ground truth dataset, chooses some of the environments that it will use to pretrain the decision maker, and then runs a "real-time" loop. The code uses very simple data replay; the image shows that data replay, augmentation, models, and real-world execution are also appropriate.
+![Scenario Driver Architecture](https://github.com/cognitive-ew/Control-Loop/blob/main/images/02%20ScenarioDriver.png)
+
 **DecisionMakerVanilla.m**<br>
 This code is a simple AI-based decision maker. It supports pretraining an ML
 model on an initial dataset, then a "real time" test where it chooses a
@@ -61,4 +64,29 @@ and two controllables. Here are the characteristics of this synthetic data file.
 
 ![Architecture of Scenario Driver](https://github.com/cognitive-ew/Control-Loop/blob/main/images/01%20DataDescription.png)
 
-A more realistic dataset would map RF environments (e.g., threats, laydowns) to appropriate responses. For example: (i) free and clear comms, (ii) tone jammer, (iii) blinking jammer, and (iv) co-channel interference. The corresponding techniques could be (i) default operations, (ii) notch filter, (iii) redundant packets, and (iv) directional antenna
+A more realistic dataset would map RF environments (e.g., threats, laydowns) to appropriate responses. For example: (i) free and clear comms, (ii) tone jammer, (iii) blinking jammer, and (iv) co-channel interference. The corresponding techniques could be (i) default operations, (ii) notch filter, (iii) redundant packets, and (iv) directional antenna.
+
+# Evaluating ML Models
+
+## Accuracy, Time, and Memory
+Every model has advantages and disadvantages; evaluate a set of models
+based on the criteria that matter to your mission. Particularly useful metrics are accuracy, memory, and time. In the on-line learning setting, accuracy of the model will be different at the end of the scenario than at the beginning; we evaluate this improvement using Adequacy. As an example, DeepNets require a lot of training data before they are useful. The following chart shows different models in (a) static and (b) on-line learning settings. We evaluate the static model with normalized root-mean-squared-error, and the on-line learning using Adequacy. (a) nRMSE Accuracy vs Time for a static model trained with an 80/20 train/test split. nRMSE=0.0 is a perfect fit. (b) Adequacy vs Time for a dynamic model that learns in mission starting with k = 4 pretrained environments out of n = 8 total environments. Adequacy=1.0 is optimal.
+
+![Evaluate ML models by accuracy, Adequacy, and time](https://github.com/cognitive-ew/Control-Loop/blob/main/images/06%20Eval%20DecisionMaker.png)
+
+Note that MATLAB's dynamic memory approach means that time and memory usage will not be completely consistent.
+
+## Ablation Tests
+
+Ablation tests determine how much a priori training data is needed to get a desired
+accuracy. $n$-choose-$k$ ablation testing proves that a cognitive system is capable of
+learning how to handle new environments. An ablation trial evaluates the impact of specific training examples(s) on the generalization ability of the model. The ground
+truth data has $n$ known cases; we train the system on $k \subseteq n$ cases, and test on all $n$, for all values of $k$ and all subsets $n$-choose-$k$. Thus, during the test, $n-k$ environments are novel.
+
+![Ablation Tests Determine How Much A Priori Data is required](https://github.com/cognitive-ew/Control-Loop/blob/main/images/05.01%20Ablation%20Intro.png)
+
+In the following image, the decision maker uses a decision tree for reinforcement learning. The $x$-axis is $k$ showing all possible subsets of $n$... that is, when $x=0$, there is no a priori training data, and when $x=n$, the decision maker is trained on all environments it will encounter during the scenario. 
+![Ablation Tests for a Decision Tree Model](https://github.com/cognitive-ew/Control-Loop/blob/main/images/05.02%20Ablation%20DecisionTree.png)
+
+In the following image, the decision maker uses a 10 different ML models for reinforcement learning. Support Vector Regression Machines (SVM) with a Pearson VII Universal Kernel obtains approximately 70% Adequacy when compared to optimal... even when pretrained on no training data.
+![Ablation Trials with Multiple ML Models](https://github.com/cognitive-ew/Control-Loop/blob/main/images/05.03%20Ablation%20MultipleML.png)
