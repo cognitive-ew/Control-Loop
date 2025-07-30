@@ -3,10 +3,12 @@ A control loop that drives a cognitive decision maker.
 The code is in support of the book "Cognitive EW: An AI Approach" by Karen Zita
 Haigh and Julia Andrusenko. 
 
+## Main entry file
 **runExperiment.m**<br>
 Main entry file. It will run the vanilla versions of the scenario driver and
 decision maker. It provides infrastructure for calling a more complete system
 
+## Scenario Driver
 **ScenarioDriverVanilla.m**<br>
 This code is the test infrastructure around a decision maker. It loads a
 ground truth dataset, selects some of that data to be training data, runs a
@@ -30,6 +32,7 @@ and Project 11.6.12 of the second edition, or Figure 10.2 of the first edition.
 The following image shows the architectural concept. The scenario driver loads a ground truth dataset, chooses some of the environments that it will use to pretrain the decision maker, and then runs a "real-time" loop. The code uses very simple data replay; the image shows that data replay, augmentation, models, and real-world execution are also appropriate.
 ![Scenario Driver Architecture](https://github.com/cognitive-ew/Control-Loop/blob/main/images/02%20ScenarioDriver.png)
 
+## Decision Maker
 **DecisionMakerVanilla.m**<br>
 This code is a simple AI-based decision maker. It supports pretraining an ML
 model on an initial dataset, then a "real time" test where it chooses a
@@ -51,6 +54,7 @@ In the following image, the decision maker is pretrained only with E124 and E135
 ![Augmenting the Decision Maker with Reinforcement Learning](https://github.com/cognitive-ew/Control-Loop/blob/main/images/04%20DecisionMaker%20RL.png)
 
 
+## A Custom Kernel for a Support Vector Regression Machine
 **PUK_kernel.m**<br>
 A custom kernel for a support vector machine based on the approach of
 Ustun, Melssen, and Buydens, "Facilitating the application of Support Vector
@@ -58,6 +62,7 @@ Regression by using a Universal Pearson VII Function Based Kernel," Chemometrics
 and Intelligent Laboratory Systems, Vol. 81, No. 1, 2006.
 DOI: 10.1016/j.chemolab.2005.09.003.
 
+## Sample Data
 **decisionData.csv**<br>
 A synthetic dataset computing performance metrics for 8 environments, 3 observables, 
 and two controllables. Here are the characteristics of this synthetic data file.
