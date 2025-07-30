@@ -4,8 +4,8 @@ The code is in support of the book "Cognitive EW: An AI Approach" by Karen Zita
 Haigh and Julia Andrusenko. 
 
 runExperiment.m 
-% Main entry file. It will run the vanilla versions of the scenario driver and
-% decision maker. It provides infrastructure for calling a more complete system
+Main entry file. It will run the vanilla versions of the scenario driver and
+decision maker. It provides infrastructure for calling a more complete system
 
 ScenarioDriverVanilla.m
 % This code is the test infrastructure around a decision maker. It loads a
