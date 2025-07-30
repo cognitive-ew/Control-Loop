@@ -3,11 +3,11 @@ A control loop that drives a cognitive decision maker.
 The code is in support of the book "Cognitive EW: An AI Approach" by Karen Zita
 Haigh and Julia Andrusenko. 
 
-runExperiment.m<br>
+**runExperiment.m**<br>
 Main entry file. It will run the vanilla versions of the scenario driver and
 decision maker. It provides infrastructure for calling a more complete system
 
-ScenarioDriverVanilla.m<br>
+**ScenarioDriverVanilla.m**<br>
 This code is the test infrastructure around a decision maker. It loads a
 ground truth dataset, selects some of that data to be training data, runs a
 "real time" test using samples from the original data (which may or may not
@@ -27,7 +27,7 @@ There are several exercises for students:<br>
 The scenario driver corresponds to Algorithm 10.1, Figure 10.13,
 and Project 11.6.12 of the second edition, or Figure 10.2 of the first edition.
 
-DecisionMakerVanilla.m<br>
+**DecisionMakerVanilla.m**<br>
 This code is a simple AI-based decision maker. It supports pretraining an ML
 model on an initial dataset, then a "real time" test where it chooses a
 decision for a current set of observations. The model is metric = model(
@@ -41,13 +41,13 @@ There are two student exercises:<br>
 The decision maker corresponds to Algorithm 5.1 (either edition),
 and also Algorithm 10.1 and Project 11.6.9 of the second edition.
 
-PUK_kernel.m<br>
+**PUK_kernel.m**<br>
 A custom kernel for a support vector machine based on the approach of
 Ustun, Melssen, and Buydens, "Facilitating the application of Support Vector
 Regression by using a Universal Pearson VII Function Based Kernel," Chemometrics 
 and Intelligent Laboratory Systems, Vol. 81, No. 1, 2006.
 DOI: 10.1016/j.chemolab.2005.09.003.
 
-decisionData.csv<br>
+**decisionData.csv**<br>
 A synthetic dataset computing performance metrics for 8 environments, 3 observables, 
 and two controllables.
