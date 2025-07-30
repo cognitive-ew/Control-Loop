@@ -52,6 +52,6 @@ DOI: 10.1016/j.chemolab.2005.09.003.
 A synthetic dataset computing performance metrics for 8 environments, 3 observables, 
 and two controllables. Here are the characteristics of this synthetic data file.
 
-![Architecture of Scenario Driver](./images/01 DataDescription.png)
+![Architecture of Scenario Driver](https://github.com/cognitive-ew/Control-Loop/blob/main/images/01%20DataDescription.png)
 
 A more realistic dataset would map RF environments (e.g., threats, laydowns) to appropriate responses. For example: (i) free and clear comms, (ii) tone jammer, (iii) blinking jammer, and (iv) co-channel interference. The corresponding techniques could be (i) default operations, (ii) notch filter, (iii) redundant packets, and (iv) directional antenna
