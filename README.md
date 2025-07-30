@@ -41,6 +41,13 @@ There are two student exercises:<br>
 The decision maker corresponds to Algorithm 5.1 (either edition),
 and also Algorithm 10.1 and Project 11.6.9 of the second edition.
 
+In the following image, the decision maker is pretrained on every environment it will encounter. We therefore expect perfect performance.
+![Vanilla version of a Decision Maker](https://github.com/cognitive-ew/Control-Loop/blob/main/images/03%20DecisionMaker%20Vanilla.png)
+
+In the following image, the decision maker is pretrained only with E124 and E135. The learner has to update the model when it gets new information from the environment.
+![Augmenting the Decision Maker with Reinforcement Learning](https://github.com/cognitive-ew/Control-Loop/blob/main/images/04%20DecisionMaker%20RL.png)
+
+
 **PUK_kernel.m**<br>
 A custom kernel for a support vector machine based on the approach of
 Ustun, Melssen, and Buydens, "Facilitating the application of Support Vector
