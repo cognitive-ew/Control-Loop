@@ -103,7 +103,7 @@ classdef ScenarioDriverVanilla
             tol = 1e-5;
 
             % Sanity check
-            disp(strat);
+            % disp(strat);
             assert(isvector(strat) && isnumeric(strat), 'strat must be a numeric vector');
 
             % Strategy match
@@ -163,8 +163,7 @@ classdef ScenarioDriverVanilla
             sumAdeq = 0; n = 0;
             for i = 1:obj.testStep:size(obj.X, 1)
                 currentObs = obj.X(i, obj.obsCols);
-                [chosenStrat, predictedPerf] = obj.decisionMaker.decide(currentObs);
-                fprintf('%d. Chosen strat is [%s] with expected performance %f\n',i,strjoin(string(chosenStrat),','),predictedPerf)
+                [~, chosenStrat, predictedPerf] = obj.decisionMaker.decide(currentObs);
 
                 actualPerf = obj.getActualPerformance(currentObs, chosenStrat);
                 [optimalStrat, optimalPerf] = obj.getOptimalPerformance(currentObs);
